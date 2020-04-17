@@ -1,39 +1,34 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-navigation-drawer app clipped>
+      <v-list-item v-for="mn in menu" :key="mn.text" @click="itemClick(mn.text)">
+        <v-list-item-icon>
+          <v-icon>{{mn.icon}}</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>{{mn.text}}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-navigation-drawer>
+    <v-app-bar app clipped-left>
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          alt="GranMercado Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="./assets/logo.png"
           transition="scale-transition"
           width="40"
         />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <h2><strong class="blue--text">Gran</strong><strong>Mercado</strong> </h2>
       </div>
-
       <v-spacer></v-spacer>
+      
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <v-btn text>
+        <span class="mr-2">Ingreso</span>
+        <v-icon>mdi-lock</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -55,6 +50,22 @@ export default {
 
   data: () => ({
     //
+    menu:[
+      {icon:"mdi-cellphone-iphone",text:"Celulares"},
+      {icon:"mdi-home-assistant",text:"Para el hogar"},
+      {icon:"mdi-laptop-chromebook",text:"Computadoras"},
+      {icon:"mdi-wrench",text:"Herramientas"},
+      {icon:"mdi-tshirt-v",text:"Ropa"},
+      {icon:"mdi-palette",text:"Belleza"},
+      {icon:"mdi-cookie",text:"Chucherías"},
+      {icon:"mdi-pharmacy",text:"Salud"},
+    ]
   }),
+  methods: {
+    itemClick:function(fn){
+      // eslint-disable-next-line no-console
+      console.log(fn)
+    }
+  }
 };
 </script>
